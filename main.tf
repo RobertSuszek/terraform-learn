@@ -10,15 +10,19 @@ terraform {
 
 provider "aws" {
   profile = "rsuszek-learn"
-  region  = "eu-central-1"
+  region  = var.region
 }
 
-resource "aws_instance" "fg_ondemand" {
-  ami           = "ami-07e1b42208e73e245"
-  instance_type = "t2.small"
-  key_name      = "master"
+resource "aws_instance" "FortigateTest" {
+  ami           = var.fortigate_AMI["7.0.2"]
+  instance_type = var.size
+  key_name      = var.key_name
 
   tags = {
     Name = "FGOnDemandImage"
   }
+}
+
+data "template_file" "FortiGate" {
+  template = file("${var.bootstrap-fgtvm}")
 }
