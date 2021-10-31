@@ -16,7 +16,7 @@ variable "size" {
   default     = "t2.small"
 }
 
-variable "fortigate_AMI" {
+variable "fortigate_ami" {
   description = "AMI for FortiGates by version"
   type        = map(any)
   default = {
