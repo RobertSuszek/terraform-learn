@@ -22,3 +22,6 @@ resource "aws_instance" "fg_ondemand" {
     Name = "FGOnDemandImage"
   }
 }
+
+resource "aws_instance" "fg_import_test" {
+}
