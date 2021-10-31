@@ -10,7 +10,7 @@ resource "aws_vpc" "fortigate_lab" {
 }
 
 resource "aws_subnet" "public_subnet" {
-  vpc_id     = aws_vpc.fortigate_lab
+  vpc_id     = aws_vpc.fortigate_lab.id
   cidr_block = var.public_subnet
   tags = {
     Name = "Public subnet"
