@@ -33,7 +33,3 @@ variable "vpc_cidr" {
 variable "public_subnet" {
   default = "10.10.0.0/24"
 }
-
-variable "private_subnet" {
-  default = "10.10.1.0/24"
-}

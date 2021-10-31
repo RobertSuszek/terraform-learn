@@ -1,11 +1,11 @@
-resource "aws_instance" "fortigate_test" {
+resource "aws_instance" "fortigate" {
   ami           = var.fortigate_ami["7.0.2"]
   instance_type = var.size
   key_name      = var.key_name
   user_data     = data.template_file.fortigate_initial_config.rendered
 
   tags = {
-    Name = "Fortigate Test"
+    Name = "Fortigate"
   }
 }
 
