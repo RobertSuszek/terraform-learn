@@ -31,24 +31,40 @@ resource "aws_security_group" "allow_mgmt_public" {
 
   ingress = [
     {
-      from_port   = 22
-      to_port     = 22
-      protocol    = "6"
-      cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+      description      = "Allow SSH over WAN"
+      protocol         = "6"
+      from_port        = 22
+      to_port          = 22
+      cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
     },
     {
-      from_port   = 443
-      to_port     = 443
-      protocol    = "6"
-      cidr_blocks = ["${chomp(data.http.myip.body)}/32"]
+      description      = "Allow HTTPS over WAN"
+      protocol         = "6"
+      from_port        = 443
+      to_port          = 443
+      cidr_blocks      = ["${chomp(data.http.myip.body)}/32"]
+      ipv6_cidr_blocks = []
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
     }
   ]
 
   egress = [
     {
-      cidr_blocks = ["0.0.0.0/0"]
-      from_port   = 0
-      to_port     = 0
+      description      = "Allow all"
+      protocol         = "-1"
+      from_port        = 0
+      to_port          = 0
+      cidr_blocks      = ["0.0.0.0/0"]
+      ipv6_cidr_blocks = ["::/0"]
+      prefix_list_ids  = []
+      security_groups  = []
+      self             = false
     }
   ]
 }
