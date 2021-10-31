@@ -14,18 +14,9 @@ provider "aws" {
   region  = "eu-central-1"
 }
 
-resource "aws_instance" "fg_normal" {
-  ami           = "ami-090da6c908c1127f6"
-  instance_type = "t2.micro"
-
-  tags = {
-    Name = "FGNormalImage"
-  }
-}
-
 resource "aws_instance" "fg_ondemand" {
   ami           = "ami-07e1b42208e73e245"
-  instance_type = "t2.micro"
+  instance_type = "t2.small"
 
   tags = {
     Name = "FGOnDemandImage"
