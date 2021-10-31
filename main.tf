@@ -1,18 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.27"
-    }
-  }
-  required_version = ">= 0.14.9"
-}
-
-provider "aws" {
-  profile = "rsuszek-learn"
-  region  = var.region
-}
-
 resource "aws_instance" "fortigate_test" {
   ami           = var.fortigate_ami["7.0.2"]
   instance_type = var.size
@@ -26,4 +11,8 @@ resource "aws_instance" "fortigate_test" {
 
 data "template_file" "fortigate_initial_config" {
   template = file("${var.fortigate_initial_config_path}")
+}
+
+data "http" "myip" {
+  url = "http://ipv4.icanhazip.com"
 }

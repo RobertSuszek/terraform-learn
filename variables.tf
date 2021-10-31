@@ -1,24 +1,17 @@
 variable "key_name" {
-  description = "Name of SSH key to connect"
-  type        = string
-  default     = "master"
+  default = "master"
 }
 
 variable "region" {
-  description = "AWS region to create environment in"
-  type        = string
-  default     = "eu-central-1"
+  default = "eu-central-1"
 }
 
 variable "size" {
-  description = "Instance size"
-  type        = string
-  default     = "t2.small"
+  default = "t2.small"
 }
 
 variable "fortigate_ami" {
-  description = "AMI for FortiGates by version"
-  type        = map(any)
+  type = map(any)
   default = {
     "7.0.2" = "ami-07e1b42208e73e245"
     "7.0.1" = "ami-0c48bc0e23f9042fc"
@@ -30,7 +23,17 @@ variable "fortigate_ami" {
 }
 
 variable "fortigate_initial_config_path" {
-  description = "Path for Fortigate inital configuration file"
-  type        = string
-  default     = "initial_config.conf"
+  default = "initial_config.conf"
+}
+
+variable "vpc_cidr" {
+  default = "10.10.0.0/16"
+}
+
+variable "public_subnet" {
+  default = "10.10.0.0/24"
+}
+
+variable "private_subnet" {
+  default = "10.10.1.0/24"
 }
