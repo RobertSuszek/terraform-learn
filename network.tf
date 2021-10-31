@@ -24,6 +24,14 @@ resource "aws_route_table_association" "public" {
   route_table_id = aws_route_table.public.id
 }
 
+resource "aws_eip" "public_ip" {
+  depends_on = [
+    aws_instance.fortigate
+  ]
+  vpc = true
+  network_interface = aws_network_interface.eth0.id
+}
+
 resource "aws_security_group" "allow_mgmt_public" {
   name        = "Allow management public"
   description = "Allow management over public IP address"
