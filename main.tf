@@ -5,7 +5,6 @@ terraform {
       version = "~> 3.27"
     }
   }
-
   required_version = ">= 0.14.9"
 }
 
@@ -17,11 +16,9 @@ provider "aws" {
 resource "aws_instance" "fg_ondemand" {
   ami           = "ami-07e1b42208e73e245"
   instance_type = "t2.small"
+  key_name      = "master"
 
   tags = {
     Name = "FGOnDemandImage"
   }
-}
-
-resource "aws_instance" "fg_import_test" {
 }
